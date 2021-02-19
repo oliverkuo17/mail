@@ -1,3 +1,21 @@
 textarea {
     min-height: 400px;
 }
+
+
+.email-subject {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: lighter;
+}
+
+.email-info {
+    border-top: 0.5px solid lightgray;
+    border-bottom: 0.5px solid lightgray;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.email-body {
+    padding-top: 20px;
+}
