@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Use buttons to toggle between views
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
-  document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
+  document.querySelector('#archived').addEventListener('click', () => load_mailbox('archived'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
   document.querySelector('#compose-form').onsubmit = send;
@@ -24,12 +24,35 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
+function reply_email(email) {
+
+  // Show compose view and hide other views
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#email-content').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'block';
+
+  document.querySelector('#compose-recipients').value = email.sender;
+  let subject = email.subject;
+  if(!subject.startsWith("Re: ")) {
+    subject = `Re: ${subject}`;
+  }
+  document.querySelector('#compose-subject').value = subject;
+  document.querySelector('#compose-body').value = `\n\nOn ${email.timestamp} ${email.sender} wrote:\n${'-'.repeat(50)} \n${email.body}`;
+}
+
 function load_mailbox(mailbox) {
 
   // Show the mailbox and hide other views
   document.querySelector('#compose-view').style.display = 'none';
   document.querySelector('#email-content').style.display = 'none';
   document.querySelector('#emails-view').style.display = 'block';
+  let nav_btn = document.querySelectorAll('.nav-btn');
+    for (var i = 0; i < nav_btn.length; i++) {
+      let self = nav_btn[i];
+      self.style.borderBottom = '4px solid transparent'
+    }
+
+  document.querySelector(`#${mailbox}`).style.borderBottom = '4px solid red';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
@@ -45,14 +68,14 @@ function load_mailbox(mailbox) {
       } else {
         name_showed = email.sender;
       }
+      emailDiv.className = "mailbox-email"
       emailDiv.innerHTML =
-          `<div style="darkgrey: black; border-bottom:0.5px solid lightgrey; font-size:16px; padding:8px">
+          `<div>
             <span style="margin-left: 20px; width: 200px; display: inline-block">${name_showed}</span>
             <span>${email.subject}</span>
             <span style="margin-right: 20px; float: right;">${email.timestamp}</span>
           </div>`
 
-      emailDiv.className = "mailbox-email"
       if (email.read) {
         emailDiv.style.fontWeight = 'normal';
       }
@@ -77,7 +100,7 @@ function load_mailbox(mailbox) {
     // Change background color of email if it has been read already
     emailDiv.style.backgroundColor = "white";
     if (email.read) {
-      emailDiv.style.backgroundColor = "rgb(240, 240, 240, 0.8)";
+      emailDiv.style.backgroundColor = "rgb(241, 241, 241, 0.5)";
     }
       document.querySelector("#emails-view").append(emailDiv)
     })
@@ -116,8 +139,6 @@ function view_email(email) {
   subject.className = 'email-subject';
 
   let info = document.createElement("div");
-    // detailedInfo.style.fontSize = '14px'
-    // detailedInfo.style.marginBottom = '10px'
   info.innerHTML = `
       <div>
           <span class="text-muted">From: </span>${email.sender}
@@ -133,10 +154,16 @@ function view_email(email) {
   body.innerHTML = email.body;
   body.className = 'email-body';
 
+  let reply_btn = document.createElement("button");
+  reply_btn.innerHTML = "Reply";
+  reply_btn.className = 'reply-btn';
+  reply_btn.addEventListener('click', () => reply_email(email));
+
   document.querySelector('#email-content').innerHTML = "";
   document.querySelector('#email-content').append(subject)
   document.querySelector('#email-content').append(info)
   document.querySelector('#email-content').append(body)
+  document.querySelector('#email-content').append(reply_btn)
 
   return false;
 
