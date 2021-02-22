@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Use buttons to toggle between views
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
-  document.querySelector('#archived').addEventListener('click', () => load_mailbox('archived'));
+  document.querySelector('#archive').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
   document.querySelector('#compose-form').onsubmit = send;
@@ -159,13 +159,29 @@ function view_email(email) {
   reply_btn.className = 'reply-btn';
   reply_btn.addEventListener('click', () => reply_email(email));
 
+  let archive_btn = document.createElement("button");
+  archive_btn.innerHTML = "Archive";
+  archive_btn.className = 'archive-btn';
+  archive_btn.addEventListener('click', () => change_archive_state(email));
+
   document.querySelector('#email-content').innerHTML = "";
   document.querySelector('#email-content').append(subject)
   document.querySelector('#email-content').append(info)
   document.querySelector('#email-content').append(body)
   document.querySelector('#email-content').append(reply_btn)
+  document.querySelector('#email-content').append(archive_btn)
 
   return false;
-
 }
 
+function change_archive_state(email) {
+  let archive_state = !email.archived;
+  fetch(`/emails/${email.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+        archived: archive_state
+    })
+  })
+  location.reload();
+  return false;
+}

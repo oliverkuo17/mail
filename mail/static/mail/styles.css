@@ -24,7 +24,7 @@ textarea {
 }
 
 .reply-btn {
-    margin-top: 30px;
+    margin-top: 50px;
     background-color: white;
     border: darkgray solid 0.5px;
     border-radius: 10%;
@@ -34,7 +34,23 @@ textarea {
 
 .reply-btn:hover {
     color:floralwhite;
-    background-color: dodgerblue;
+    background-color: indianred;
+    outline:none;
+}
+
+.archive-btn {
+    margin-top: 50px;
+    background-color: white;
+    border: darkgray solid 0.5px;
+    border-radius: 10%;
+    outline: none;
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.archive-btn:hover {
+    color:floralwhite;
+    background-color:indianred;
     outline:none;
 }
 
@@ -44,7 +60,7 @@ textarea {
 }
 
 .compose-btn {
-    color:gray;
+    color:black;
     border-radius: 25px;
     border:lightgray solid 0.5px;
     background-color: white;
@@ -86,4 +102,21 @@ textarea {
 .mailbox-email:hover {
     border-bottom:lightgray solid 2.5px;
     font-size:18px;
+}
+
+
+
+.fa-inbox {
+    color:sienna;
+    margin-right: 10px;
+}
+
+.fa-paper-plane {
+    color:tomato;
+    margin-right: 10px;
+}
+
+.fa-archive {
+    color:orange;
+    margin-right: 10px;
 }
