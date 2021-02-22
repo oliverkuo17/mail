@@ -1,3 +1,122 @@
 textarea {
     min-height: 400px;
 }
+
+.nav-bar {
+    padding-top: 15px;
+}
+
+.email-subject {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: lighter;
+}
+
+.email-info {
+    border-top: 0.5px solid lightgray;
+    border-bottom: 0.5px solid lightgray;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.email-body {
+    padding-top: 20px;
+}
+
+.reply-btn {
+    margin-top: 50px;
+    background-color: white;
+    border: darkgray solid 0.5px;
+    border-radius: 10%;
+    outline: none;
+    padding: 5px;
+}
+
+.reply-btn:hover {
+    color:floralwhite;
+    background-color: indianred;
+    outline:none;
+}
+
+.archive-btn {
+    margin-top: 50px;
+    background-color: white;
+    border: darkgray solid 0.5px;
+    border-radius: 10%;
+    outline: none;
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.archive-btn:hover {
+    color:floralwhite;
+    background-color:indianred;
+    outline:none;
+}
+
+.navbar-brand {
+    font-size: 42px;
+    margin-right: 38px;
+}
+
+.compose-btn {
+    color:black;
+    border-radius: 25px;
+    border:lightgray solid 0.5px;
+    background-color: white;
+    padding:3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0 0 2pt 1pt lightgray;
+}
+
+.compose-btn:hover {
+    background-color: rgb(241, 241, 241, 0.3);
+}
+
+.nav-btn {
+    border:none;
+    background-color: white;
+    outline: none;
+    width:200px;
+    /* border-bottom: 4px solid transparent; */
+}
+
+#sent {
+    border-left: lightgray solid 0.3px;
+    border-right: lightgray solid 0.3px;
+}
+
+.nav-btn:focus {
+    outline:0 !important;
+    /* border-bottom: 4px solid red; */
+}
+
+.mailbox-email {
+    color:black;
+    border-bottom:0.5px solid lightgrey;
+    font-size:16px;
+    padding:8px
+}
+
+.mailbox-email:hover {
+    border-bottom:lightgray solid 2.5px;
+    font-size:18px;
+}
+
+
+
+.fa-inbox {
+    color:sienna;
+    margin-right: 10px;
+}
+
+.fa-paper-plane {
+    color:tomato;
+    margin-right: 10px;
+}
+
+.fa-archive {
+    color:orange;
+    margin-right: 10px;
+}

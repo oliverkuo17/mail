@@ -6,10 +6,27 @@
         <title>{% block title %}Mail{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'mail/css/all.css' %}">
         {% block script %}
         {% endblock %}
     </head>
     <body>
+        <div class="navbar navbar-expand-md navbar-light" >
+            <a class="navbar-brand" href="{% url 'index' %}" style="color:rgb(207, 11, 11);" >Kmail</a>
+            {% if request.user.is_authenticated %}
+                <button class="compose-btn" id="compose">Compose</button>
+
+                <div class="collapse navbar-collapse" id="responsiveDropdown">
+                    {# Left Side links #}
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    {# Right side user email and logout button #}
+                    <div class="nav-link" style="color: #3c4043; font-weight: 500">{{ request.user.email }}</div>
+                    <a class="white-btn btn btn-sm" href="{% url 'logout' %}">Log Out</a>
+                </div>
+            {% endif %}
+        </div>
+        <hr style="margin: 0; margin-top: 5px">
         <div class="container">
             {% block body %}
             {% endblock %}
