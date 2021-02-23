@@ -1,7 +1,11 @@
 textarea {
-    min-height: 400px;
+    min-height: 230px;
 }
-
+.btn-danger {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: right;
+}
 .nav-bar {
     padding-top: 15px;
 }
@@ -118,5 +122,10 @@ textarea {
 
 .fa-archive {
     color:orange;
+    margin-right: 10px;
+}
+
+.fa-plus {
+    color:orangered;
     margin-right: 10px;
 }

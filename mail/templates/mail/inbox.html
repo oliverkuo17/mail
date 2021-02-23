@@ -17,14 +17,6 @@
             </ul>
         </div>
     </nav>
-    <!-- <div class="nav-bar"> -->
-        <!-- <button class="btn btn-sm btn-outline-secondary" id="inbox">Inbox</button>
-        <button class="btn btn-sm btn-outline-secondary" id="compose">Compose</button>
-        <button class="btn btn-sm btn-outline-secondary" id="sent">Sent</button>
-        <button class="btn btn-sm btn-outline-secondary" id="archived">Archived</button> -->
-        <!-- <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}" style="float: right;margin-left: 8px;">Log Out</a>
-        <h5 style="float: right;">{{ request.user.email }}</h5> -->
-    <!-- </div> -->
 
     <div id="emails-view"></div>
 
@@ -43,7 +35,7 @@
                 <input class="form-control" id="compose-subject" placeholder="Subject">
             </div>
             <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input type="submit" class="btn btn-primary"/>
+            <input type="submit" class="btn btn-danger" value="send"/>
         </form>
     </div>
 {% endblock %}
