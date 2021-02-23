@@ -1,14 +1,17 @@
 # Mail
 An email web application which allows users to send, receive, and archive emails.
 
-## Index
+## Inbox:
 <img src="mail/static/mail/inbox.PNG">
 
-## Compose    
+## Compose:
 <img src="mail/static/mail/compose.PNG">
 
-## Sent    
+## Reply:
+<img src="mail/static/mail/reply.PNG">
+
+## Sent:
 <img src="mail/static/mail/sent.PNG">
 
-## Archive    
+## Archive:
 <img src="mail/static/mail/archive.PNG">
